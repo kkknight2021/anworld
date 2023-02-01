@@ -38,13 +38,14 @@ import manageGoods from '@/components/ManagerComponents/manageGoods'
 Vue.use(Router)
 
 export default new Router({
+  mode: "history",
   routes: [
     {
-      path: '',
-      redirect:'/Home'
+      path: '/Home',
+      redirect: {name: "Home"}
     },
     {
-      path: '/Home',
+      path: '/',
       name: 'Home',
       component: Home
       //component: resolve => require(['@/components/Home.vue'],resolve)

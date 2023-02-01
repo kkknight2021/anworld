@@ -28,7 +28,7 @@ export default {
     },
     getAllArticleInfo() {
       this.$axios.post('/api/article/getAllArticles').then(res=>{
-      console.log(res);
+      // console.log(res);
       this.data = res.data.data;
       })
     },
@@ -51,31 +51,33 @@ export default {
         console.log(this.data)
         console.log(this.items)
       }, 500)
+    },
+    simpleContent(content) {
+      // console.log(content)
+      var simpleContent = content.replace(/<.*?>/g, '');
+      if(simpleContent.length > 250) {
+        return simpleContent.substr(0, 250) + '......'
+      }
+      else return simpleContent
     }
   },
   watch:{
     // 监听路由发生改变
-    '$route':{
-  	  handler(newVal) {
-  		if(newVal.query.classification) this.changeItemsList();
-	  }
+    '$route': function(newVal){
+      if (newVal.query.classification) this.changeItemsList();
     }
+    // {
+  	//   handler(newVal) {
+  	// 	if(newVal.query.classification) this.changeItemsList();
+	  // }
+    // }
   },
   mounted() {
 
     this.changeItemsList()
   },
   computed: {
-    simpleContent: () => {
-      return (content) => {
-        console.log(content)
-        var simpleContent = content.replace(/<.*?>/g, '');
-        if(simpleContent.length > 250) {
-          return simpleContent.substr(0, 250) + '......'
-        }
-        else return simpleContent
-      }
-    }
+    
   },
 }
 </script>
