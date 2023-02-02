@@ -13,6 +13,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "crypto-js": "^4.1.1",
     "element-china-area-data": "^5.0.2",
     "element-ui": "^2.15.10",

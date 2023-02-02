@@ -1,36 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Home from '@/components/Home'
-import HumanResource from '@/components/HumanResource'
-import Store from '@/components/Store'
-import User from '@/components/User'
-import UserLogin from '@/components/UserLogin'
-import UserInfo from '@/components/UserComponents/UserInfo'
-import UserRegister from '@/components/UserComponents/UserRegister'
-import VolunteersApplication from '@/components/HRComponents/VolunteersApplication'
-import Recruitment from '@/components/HRComponents/Recruitment'
-import RTFnews from '@/components/NewsComponents/RTFnews'
-import RTFarticle from '@/components/NewsComponents/RTFarticle'
-import Join from '@/components/HRComponents/JoinComponent'
-import Manager from '@/components/ManagerComponents/Manager'
-import manageUser from '@/components/ManagerComponents/manageUser'
-import manageNews from '@/components/ManagerComponents/manageNews'
-import writeArticle from '@/components/ManagerComponents/writeArticle'
-import News from '@/components/NewsComponents/News'
-import PDFnews from '@/components/NewsComponents/PDFnews'
-import lectureGroups from '@/components/LectureComponents/lectureGroups'
-import lecture from '@/components/LectureComponents/lecture'
-import manageLecture from '@/components/ManagerComponents/manageLecture'
-import manageLectureGroup from '@/components/ManagerComponents/manageLectureGroup'
-import manageInstitution from '@/components/ManagerComponents/manageInstitution'
-import MapTest from '@/components/MapTest'
-import writeLecture from '@/components/ManagerComponents/writeLecture'
-import QandAList from '@/components/QandAComponents/QandAList'
-import QandA from '@/components/QandAComponents/QandA'
-import manageQuestion from '@/components/ManagerComponents/manageQuestion'
-import manageAnswer from '@/components/ManagerComponents/manageAnswer'
-import manageGoods from '@/components/ManagerComponents/manageGoods'
+const HelloWorld = () => import('@/components/HelloWorld')
+const Home = () => import('@/components/Home')
+const HumanResource = () => import('@/components/HumanResource')
+const Store = () => import('@/components/Store')
+const User = () => import('@/components/User')
+const UserLogin = () => import('@/components/UserLogin')
+const UserInfo = () => import('@/components/UserComponents/UserInfo')
+const UserRegister = () => import('@/components/UserComponents/UserRegister')
+const VolunteersApplication = () => import('@/components/HRComponents/VolunteersApplication')
+const Recruitment = () => import('@/components/HRComponents/Recruitment')
+const RTFnews = () => import('@/components/NewsComponents/RTFnews')
+const RTFarticle = () => import('@/components/NewsComponents/RTFarticle')
+const Join = () => import('@/components/HRComponents/JoinComponent')
+const Manager = () => import('@/components/ManagerComponents/Manager')
+const manageUser = () => import('@/components/ManagerComponents/manageUser')
+const manageNews = () => import('@/components/ManagerComponents/manageNews')
+const writeArticle = () => import('@/components/ManagerComponents/writeArticle')
+const News = () => import('@/components/NewsComponents/News')
+const PDFnews = () => import('@/components/NewsComponents/PDFnews')
+const lectureGroups = () => import('@/components/LectureComponents/lectureGroups')
+const lecture = () => import('@/components/LectureComponents/lecture')
+const manageLecture = () => import('@/components/ManagerComponents/manageLecture')
+const manageLectureGroup = () => import('@/components/ManagerComponents/manageLectureGroup')
+const manageInstitution = () => import('@/components/ManagerComponents/manageInstitution')
+const MapTest = () => import('@/components/MapTest')
+const writeLecture = () => import('@/components/ManagerComponents/writeLecture')
+const QandAList = () => import('@/components/QandAComponents/QandAList')
+const QandA = () => import('@/components/QandAComponents/QandA')
+const manageQuestion = () => import('@/components/ManagerComponents/manageQuestion')
+const manageAnswer = () => import('@/components/ManagerComponents/manageAnswer')
+const manageGoods = () => import('@/components/ManagerComponents/manageGoods')
 
 // import VueRouter from "vue-router"
 //import { resolve } from 'webpack'Home
