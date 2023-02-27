@@ -31,6 +31,12 @@ import QandA from '@/components/QandAComponents/QandA'
 import manageQuestion from '@/components/ManagerComponents/manageQuestion'
 import manageAnswer from '@/components/ManagerComponents/manageAnswer'
 import manageGoods from '@/components/ManagerComponents/manageGoods'
+import changeUserInfo from "@/components/UserComponents/changeUserInfo.vue";
+import volunteer from "@/components/UserComponents/volunteer.vue";
+import improveUserInfo from "@/components/UserComponents/ApplyVolunteer/improveUserInfo.vue";
+import applyVolunteer from "@/components/managerComponents/applyVolunteer.vue";
+import waitCheck from "@/components/UserComponents/ApplyVolunteer/waitCheck.vue";
+import applySuccess from "@/components/UserComponents/ApplyVolunteer/applySuccess.vue";
 
 // import VueRouter from "vue-router"
 //import { resolve } from 'webpack'Home
@@ -69,7 +75,7 @@ export default new Router({
       name: 'lecture',
       component: lecture,
     },
-    
+
     {
       path: '/QandA',
       name: 'QandA',
@@ -152,7 +158,39 @@ export default new Router({
             needLogin: true
           },
         },
-        
+        {
+          path:'changeUserInfo',
+          name: 'changeUserInfo',
+          component: changeUserInfo,
+          meta: {
+            needLogin: true
+          },
+        },
+        {
+          path:'volunteer',
+          name:'volunteer',
+          component: volunteer,
+          meta: {
+            needLogin: true
+          },
+          children:[
+            {
+              path: 'improveUserInfo',
+              name: 'improveUserInfo',
+              component: improveUserInfo,
+            },
+            {
+              path: 'waitCheck',
+              name: 'waitCheck',
+              component: waitCheck,
+            },
+            {
+              path: 'applySuccess',
+              name: 'applySuccess',
+              component: applySuccess,
+            }
+          ]
+        }
       ]
     },
     {
@@ -195,7 +233,7 @@ export default new Router({
             needLogin: true
           },
         },
-       
+
         {
           path:'manageUser',
           name: 'manageUser',
@@ -276,6 +314,16 @@ export default new Router({
             needLogin: true
           },
         },
+        {
+          path: 'applyVolunteer',
+          name: 'applyVolunteer',
+          component: applyVolunteer,
+          meta: {
+            ChineseName: '志愿者申请',
+            breadNumber: 1 ,
+            needLogin: true
+          }
+        }
       ]
     }
 

@@ -77,7 +77,7 @@
               else if (res.data.code === 303) {
                 this.$axios.get("/api/logout").then(logoutRes => {
                   console.log(logoutRes)
-                  this.isLoginAndJump(res)
+                  this.submitForm(formName)
                 });
 
               }
