@@ -107,6 +107,7 @@
 
   export default {
     name: 'TdtMap',
+    props: ['tdtLoaded'],
     data() {
       return {
         tdtMapDivID: "tdtMapDivID_"+this._uid,
@@ -128,12 +129,18 @@
     created() {
     },
     mounted(){
-      // 初始化天地图
-      this.initTdtMap();
+      // 初始化天地图 改为等待脚本加载后再初始化.
+      if(this.tdtLoaded){
+        this.initTdtMap();
+      }
 
-      console.log(this.options)
     },
     watch: {
+      tdtLoaded: function(newV, oldV){
+        if(newV){
+          this.initTdtMap();
+        }
+      },
       lng(newLng, oldLng) {
         this.$bus.$emit('lng',newLng);
         console.log(this.$bus)

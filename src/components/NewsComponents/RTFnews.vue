@@ -24,19 +24,16 @@ export default {
   methods: {
     Jump :function(item){
         this.article = item;
-        this.$router.push({path:"/RTFarticle",query:{from:this.$route.path, article:JSON.stringify(this.article)}})
+        this.$bus["RTF-Article"] = JSON.stringify(this.article);
+        this.$router.push({path:"/RTFarticle",query:{from:this.$route.path, id: this.article.id}});
     },
-    getAllArticleInfo() {
-      this.$axios.post('/api/article/getAllArticles').then(res=>{
-      console.log(res);
-      this.data = res.data.data;
-      })
+    async getAllArticleInfo() {
+      this.data = (await this.$axios.post('/api/article/getAllArticles')).data.data;
     },
     changeItemsList() {
       console.log(1)
       this.items = [];
-      this.getAllArticleInfo();
-      setTimeout(() => {
+      this.getAllArticleInfo().then(() => {
         this.classification = this.$route.query.classification;
         if(this.classification !== 'ALL') {
           this.data.forEach((element) => {
@@ -48,34 +45,40 @@ export default {
         else {
           this.items = this.data;
         }
-        console.log(this.data)
-        console.log(this.items)
-      }, 500)
+        // console.log(this.data)
+        // console.log(this.items)
+      });
+    },
+    simpleContent(content) {
+      // console.log(content)
+      var simpleContent = content.replace(/<.*?>/g, '');
+      if(simpleContent.length > 250) {
+        return simpleContent.substr(0, 250) + '......'
+      }
+      else return simpleContent
     }
   },
   watch:{
     // 监听路由发生改变
-    '$route':{
-  	  handler(newVal) {
-  		if(newVal.query.classification) this.changeItemsList();
-	  }
+    '$route': 
+    function(newVal){
+      if (!newVal.query.classification) {
+        this.$route.query.classification = 'ALL';
+      }
+      this.changeItemsList();
     }
+    // {
+  	//   handler(newVal) {
+  	// 	if(newVal.query.classification) this.changeItemsList();
+	  // }
+    // }
   },
   mounted() {
 
     this.changeItemsList()
   },
   computed: {
-    simpleContent: () => {
-      return (content) => {
-        console.log(content)
-        var simpleContent = content.replace(/<.*?>/g, '');
-        if(simpleContent.length > 250) {
-          return simpleContent.substr(0, 250) + '......'
-        }
-        else return simpleContent
-      }
-    }
+    
   },
 }
 </script>
