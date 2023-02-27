@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 const HelloWorld = () => import('@/components/HelloWorld')
 const Home = () => import('@/components/Home')
 const HumanResource = () => import('@/components/HumanResource')
@@ -31,6 +32,7 @@ const QandA = () => import('@/components/QandAComponents/QandA')
 const manageQuestion = () => import('@/components/ManagerComponents/manageQuestion')
 const manageAnswer = () => import('@/components/ManagerComponents/manageAnswer')
 const manageGoods = () => import('@/components/ManagerComponents/manageGoods')
+
 
 // import VueRouter from "vue-router"
 //import { resolve } from 'webpack'Home
@@ -70,7 +72,7 @@ export default new Router({
       name: 'lecture',
       component: lecture,
     },
-    
+
     {
       path: '/QandA',
       name: 'QandA',
@@ -153,7 +155,39 @@ export default new Router({
             needLogin: true
           },
         },
-        
+        {
+          path:'changeUserInfo',
+          name: 'changeUserInfo',
+          component: changeUserInfo,
+          meta: {
+            needLogin: true
+          },
+        },
+        {
+          path:'volunteer',
+          name:'volunteer',
+          component: volunteer,
+          meta: {
+            needLogin: true
+          },
+          children:[
+            {
+              path: 'improveUserInfo',
+              name: 'improveUserInfo',
+              component: improveUserInfo,
+            },
+            {
+              path: 'waitCheck',
+              name: 'waitCheck',
+              component: waitCheck,
+            },
+            {
+              path: 'applySuccess',
+              name: 'applySuccess',
+              component: applySuccess,
+            }
+          ]
+        }
       ]
     },
     {
@@ -196,7 +230,7 @@ export default new Router({
             needLogin: true
           },
         },
-       
+
         {
           path:'manageUser',
           name: 'manageUser',
@@ -277,6 +311,16 @@ export default new Router({
             needLogin: true
           },
         },
+        {
+          path: 'applyVolunteer',
+          name: 'applyVolunteer',
+          component: applyVolunteer,
+          meta: {
+            ChineseName: '志愿者申请',
+            breadNumber: 1 ,
+            needLogin: true
+          }
+        }
       ]
     }
 

@@ -1,7 +1,5 @@
 <template>
-
-  <div class="userList-box">
-
+  <div class="applyList-box">
     <div style="display: flex">
       <el-input
         v-model="inputText"
@@ -26,17 +24,6 @@
         <el-table-column prop="createTime" label="创建时间" ></el-table-column>
         <el-table-column label="操作" >
           <template slot-scope="scope">
-
-          
-            <!-- <el-button size="small" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-            <el-dialog title="提示" :visible.sync="delVisible" width="300px" center>
-              <div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>
-              <span slot="footer" class="dialog-footer">
-                <el-button @click="delVisible = false">取 消</el-button>
-                <el-button type="primary" @click="deleteRow" >确 定</el-button>
-            </span>
-            </el-dialog> -->
-
             <el-button size="small" type="info" @click="handleEdit(scope.$index, scope.row)">修改权限</el-button>
             <el-dialog
               title="编辑信息"
@@ -71,7 +58,6 @@
       </el-table>
     </el-main>
   </div>
-
 </template>
 
 <script>
@@ -146,7 +132,7 @@ export default {
         console.log(this.inputText)
         var slist = [];
         // 过滤需要的数据
-        
+
         this.data.forEach((item) => {
           // 检测搜索关键字 和 判断是否删除的数据
           console.log(JSON.stringify(item.username).toLowerCase())
@@ -230,7 +216,7 @@ export default {
           this.editUser.permissions[i] = item.id;
           i++;
         }
-      }) 
+      })
       this.editVisible = true;
       console.log(this.editUser)
       console.log(this.permissionList)
@@ -271,7 +257,7 @@ export default {
 </script>
 
 <style scoped>
-.userList-box {
+.applyList-box {
   width: 100%;
   padding-right: 5%;
 }
